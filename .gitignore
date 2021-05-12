@@ -1,2 +1,3 @@
 learning/__pycache__
-learning/settings.py
+main/__pycache__
+db.sqlite3
