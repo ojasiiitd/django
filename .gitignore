@@ -1,1 +1,2 @@
-*.pyc
+learning/__pycache__
+learning/settings.py
