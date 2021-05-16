@@ -10,4 +10,7 @@ def index(response , id):
         items = ls.item_set.get(id=1)
     except:
         items = Item(text="No Items in List yet" , complete=False)
-    return HttpResponse("<h1> %s </h1> <br> %s " %(ls.name , items.text))
+    return render(response , "main/list.html" , {"ls":ls})
+
+def home(response):
+    return render(response , "main/home.html")
