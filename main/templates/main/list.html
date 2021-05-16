@@ -6,15 +6,23 @@ All Lists
 
 {% block content %}
     <h1>{{ls.name}}</h1>
-    <UL>
-        {% for item in ls.item_set.all %}
-            <li> {{item.text}} <br>
-                {% if item.complete == False %}
-                    Incomplete
-                {% else %}
-                    Complete
-                {% endif %}
-            </li>
-        {% endfor %}
-    </UL>
+    <form method="post" , action="#">
+        {% csrf_token %}
+        <UL>
+            {% for item in ls.item_set.all %}
+                <li> {{item.text}} <br>
+                    {% if item.complete == False %}
+                    <input type="checkbox" , value="clicked" , name="c{{item.id}}">
+                        Incomplete
+                    {% else %}
+                    <input type="checkbox" , value="clicked" , name="c{{item.id}}" checked>
+                        Complete
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </UL>
+        <button type="submit" , name="save" , value="save">Save</button>
+        <input type="text" , name="new">
+        <button type="submit" , name="newItem" , value="newItem">Add Item</button>
+    </form>
 {% endblock %}

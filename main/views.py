@@ -8,6 +8,20 @@ from .forms import CreateNewList
 
 def index(response , id):
     ls = ToDoList.objects.get(id=id)
+
+    if response.method == "POST":
+        print(response)
+        if response.POST.get("save"):
+            for item in ls.item_set.all():
+                if response.POST.get("c"+str(item.id)) == "clicked":
+                    item.complete = True
+                else:
+                    item.complete = False
+                item.save()
+        elif response.POST.get("new"):
+            txt = response.POST.get("new")
+            ls.item_set.create(text=txt , complete=False)
+
     try:
         items = ls.item_set.get(id=1)
     except:
