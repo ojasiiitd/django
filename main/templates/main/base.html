@@ -6,7 +6,8 @@
         <div id="content" , name="content">
             {% if user.is_authenticated %}
                 <h2>Welcome, {{user}}</h2>
-                <a href="/logout"> Logout </a> 
+                <a href="/logout"> Logout </a> <br>
+                <a href="/create"> Create/Update List </a> 
             {% else %}
             <p><a href="/login"> Login Here </a></p>
             {% endif %}

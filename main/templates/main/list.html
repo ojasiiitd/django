@@ -5,11 +5,12 @@ All Lists
 {% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <h1>{{ls.name}}</h1>
     <form method="post" , action="#">
         {% csrf_token %}
         <UL>
-            {% for item in ls.item_set.all %}
+            {% for item in user.todolist.all %}
                 <li> {{item.text}} <br>
                     {% if item.complete == False %}
                     <input type="checkbox" , value="clicked" , name="c{{item.id}}">
@@ -25,4 +26,7 @@ All Lists
         <input type="text" , name="new">
         <button type="submit" , name="newItem" , value="newItem">Add Item</button>
     </form>
+{% else %}
+<p>Please Login/Signup first!</p>
+{% endif %}
 {% endblock %}
