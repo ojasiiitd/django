@@ -20,9 +20,9 @@ def reg(response):
 def send_sso(response):
 	print("SENDING...")
 	response = requests.post(
-		'http://127.0.0.1:8200/sso/login/',
+		'http://127.0.0.1:8000/sso/login/',
 		data={
-				"employee_code": "TEJAS" , 
+				"employee_code": "OJAS" , 
 				"password": "ojas"
 			}
 		)
